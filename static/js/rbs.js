@@ -1,4 +1,4 @@
-filePath = '../../csv/2019_gaps.csv';
+filePath = '../csv/2019_gaps.csv';
 
 var fileData;
 
