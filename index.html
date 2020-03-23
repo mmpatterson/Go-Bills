@@ -7,50 +7,156 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Running Back Stats</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="static/js/rb_gaps.js"></script>
+  <script src="static/js/rb_gaps2.js"></script>
+  <script src="static/js/rb_locations.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
 </head>
 
 <body>
-  
+
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>Running Back Stats</h1>
         <p>Use the dropdown below to explore running back statistics</p>
-        <p>This webpage was created by <a href="https://twitter.com/MaxFromChicago" target="_blank">Max Patterson</a></p>
-        <p>Thanks to <a href="https://twitter.com/nflscrapR" target="_blank">nflscrapR</a> for making this data available!</p>
+        <p>This webpage was created by <a href="https://twitter.com/MaxFromChicago" target="_blank">Max Patterson</a>
+        </p>
+        <p>Thanks to <a href="https://twitter.com/nflscrapR" target="_blank">nflscrapR</a> for making this data
+          available!</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Select Running Back:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+      <div class="col-md-6" id="RB1">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <center>Select Running Back</center>
+            </h3>
+          </div>
+          <br>
+          <center><select id="selDataset" onchange="optionChanged(this.value)"></select></center>
+          </br>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Rush Percentage By Gap</h3>
           </div>
-          <div id="sample-metadata" class="panel-body"></div>
+          <center>
+            <div id="rb_gaps" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Rush Expected Points Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rush_epa" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Receiving Expected Points Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rec_epa" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Rush Win Probability Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rush_Wpa" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Receiving Win Probability Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rec_Wpa" class="panel-body"></div>
+          </center>
         </div>
       </div>
-      <div class="col-md-5">
-        <div id="bar"></div>
-      </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
+      <div class="col-md-6" id="RB2">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <center>Select Running Back</center>
+            </h3>
+          </div>
+          <br>
+          <center><select id="selDataset2" onchange="optionChanged2(this.value)"></select></center>
+          </br>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Rush Percentage By Gap</h3>
+          </div>
+          <center>
+            <div id="rb_gaps2" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Rush Expected Points Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rush_epa2" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Receiving Expected Points Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rec_epa2" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Rush Win Probability Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rush_Wpa2" class="panel-body"></div>
+          </center>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Receiving Win Probability Added Per Play</h3>
+          </div>
+          <center>
+            <div id="rec_Wpa2" class="panel-body"></div>
+          </center>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
+  </div>
+  <div class="col-md-5">
+    <div id="bar"></div>
+  </div>
+  <div class="col-md-5">
+    <div id="gauge"></div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="bubble"></div>
     </div>
+  </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="static/js/rbs.js"></script>
-  <!-- <script src="./static/js/bonus.js"></script> -->
+  <script src="static/js/rb_gaps.js"></script>
+  <script src="static/js/rb_gaps2.js"></script>
+  <!-- <script src="static/js/rb_locations.js"></script> -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
 
 </body>
 
