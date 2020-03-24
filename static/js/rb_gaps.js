@@ -73,8 +73,8 @@ function demInfo(rb){
 
     console.log("Rush EPA", rush_epa);
 
-    player_info = {"Rush Yards: ": rush_yards, "Rush EPA: ": rush_epa, "Rush Touchdowns ": rush_touchdowns, "Receiving Yards: ": rec_yards, 
-        "Receiving EPA": rec_epa, "Pass Touchdowns": pass_touchdowns};
+    player_info = {"Rushing Yards: ": rush_yards, "Rushing Total EPA: ": rush_epa, "Rushing Touchdowns ": rush_touchdowns, "Receiving Yards: ": rec_yards, 
+        "Receiving Total EPA": rec_epa, "Receiving Touchdowns": pass_touchdowns};
 
     d3.select("#demInfo").selectAll("div").remove(); 
 

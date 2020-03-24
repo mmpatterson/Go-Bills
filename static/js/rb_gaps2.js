@@ -44,6 +44,46 @@ function init2() {
     optionChanged2(fileData2.rb_name);
 }
 
+function demInfo2(rb){
+    rush_yards = playerFileData[rb].run.yards_gained.reduce(function(a, b){
+        return a + b;
+    }, 0);
+    console.log('Rush Yards:', rush_yards);
+
+    console.log('Rush EPA: ', playerFileData[rb].run.epa);
+    rush_epa = playerFileData[rb].run.epa.reduce(function(a, b){
+        return a + b;
+    }, 0);
+
+    rush_touchdowns = playerFileData[rb].run.rush_touchdown.reduce(function(a, b){
+        return a + b;
+    }, 0);
+
+    rec_yards = playerFileData[rb].pass.yards_gained.reduce(function(a, b){
+        return a + b;
+    }, 0);
+
+    rec_epa = playerFileData[rb].pass.epa.reduce(function(a, b){
+        return a + b;
+    }, 0);
+
+    pass_touchdowns = playerFileData[rb].pass.pass_touchdown.reduce(function(a, b){
+        return a + b;
+    }, 0);
+
+    console.log("Rush EPA", rush_epa);
+
+    player_info2 = {"Rushing Yards: ": rush_yards, "Rushing Total EPA: ": rush_epa, "Rushing Touchdowns ": rush_touchdowns, "Receiving Yards: ": rec_yards, 
+        "Receiving Total EPA": rec_epa, "Receiving Touchdowns": pass_touchdowns};
+
+    d3.select("#demInfo2").selectAll("div").remove(); 
+
+    var selection = d3.select('#demInfo2');
+    selection.html("");
+    Object.entries(player_info2).forEach(([key, value]) => {
+        selection.append('div').text(`${key}: ${value}`)
+    })
+}
 /*
 * Creates the bar chart
 */
@@ -377,6 +417,7 @@ function recWpaPlot2() {
 // Function to run when data changes (used above)
 function optionChanged2(sample) {
     // metaData(sample);
+    demInfo2(sample);
     buildPlot2(sample);
     rushEpaPlot2();
     recEpaPlot2();
