@@ -51,9 +51,18 @@ function demInfo(rb){
     console.log('Rush Yards:', rush_yards);
 
     console.log('Rush EPA: ', playerFileData[rb].run.epa);
-    rush_epa = playerFileData[rb].run.epa.reduce(function(a, b){
-        return a + b;
-    }, 0);
+    
+    console.log('First Rush', playerFileData[rb].run.epa[1]);
+    var rush_epa = 0;
+    // rush_epa = playerFileData[rb].run.epa.reduce(function(a, b){
+    //     return a + b;
+    // }, 0);
+    for(i = 0; i<playerFileData[rb].run.epa.length;i++){
+        val = playerFileData[rb].run.epa[i]
+        if(val != 'N/A'){
+            rush_epa += val;
+        }
+    }
 
     rush_touchdowns = playerFileData[rb].run.rush_touchdown.reduce(function(a, b){
         return a + b;
@@ -73,7 +82,7 @@ function demInfo(rb){
 
     console.log("Rush EPA", rush_epa);
 
-    player_info = {"Rushing Yards: ": rush_yards, "Rushing Total EPA: ": rush_epa, "Rushing Touchdowns ": rush_touchdowns, "Receiving Yards: ": rec_yards, 
+    player_info = {"Rushing Yards": rush_yards, "Rushing Total EPA": rush_epa, "Rushing Touchdowns ": rush_touchdowns, "Receiving Yards": rec_yards, 
         "Receiving Total EPA": rec_epa, "Receiving Touchdowns": pass_touchdowns};
 
     d3.select("#demInfo").selectAll("div").remove(); 
