@@ -20,7 +20,7 @@ d3.csv(filePath).then(info => {
 // Load in data from json
 d3.json(rbFilePath).then(info => {
     playerFileData = info;
-    console.log(playerFileData);
+    // console.log(playerFileData);
     d3.selectAll("RB1").on("change", init());
 });
 
@@ -48,15 +48,15 @@ function demInfo(rb){
     rush_yards = playerFileData[rb].run.yards_gained.reduce(function(a, b){
         return a + b;
     }, 0);
-    console.log('Rush Yards:', rush_yards);
+    // console.log('Rush Yards:', rush_yards);
 
-    console.log('Rush EPA: ', playerFileData[rb].run.epa);
+    // console.log('Rush EPA: ', playerFileData[rb].run.epa);
     
-    console.log('First Rush', playerFileData[rb].run.epa[1]);
+    // console.log('First Rush', playerFileData[rb].run.epa[1]);
     var rush_epa = 0;
-    // rush_epa = playerFileData[rb].run.epa.reduce(function(a, b){
-    //     return a + b;
-    // }, 0);
+
+    // Added bug solution- 'N/A' was value for EPA for some plays, which caused 
+    // script to thing we wanted to append all EPAs together as strings
     for(i = 0; i<playerFileData[rb].run.epa.length;i++){
         val = playerFileData[rb].run.epa[i]
         if(val != 'N/A'){
@@ -80,7 +80,7 @@ function demInfo(rb){
         return a + b;
     }, 0);
 
-    console.log("Rush EPA", rush_epa);
+    // console.log("Rush EPA", rush_epa);
 
     player_info = {"Rushing Yards": rush_yards, "Rushing Total EPA": rush_epa, "Rushing Touchdowns ": rush_touchdowns, "Receiving Yards": rec_yards, 
         "Receiving Total EPA": rec_epa, "Receiving Touchdowns": pass_touchdowns};
@@ -155,7 +155,7 @@ function rushEpaPlot() {
     var color = "steelblue";
     rb = document.getElementById('selDataset').value;
     values = playerFileData[rb].run.epa;
-    console.log(playerFileData[rb]);
+    // console.log(playerFileData[rb]);
 
     var margin = {top: 20, right: 30, bottom: 30, left: 30},
     width = 460 - margin.left - margin.right,

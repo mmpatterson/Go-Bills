@@ -20,7 +20,7 @@ d3.csv(filePath2).then(info => {
 // Load in data from json
 d3.json(rbfilePath2).then(info => {
     playerfileData2 = info;
-    console.log(playerfileData2);
+    // console.log(playerfileData2);
     d3.selectAll("RB2").on("change", init2());
 });
 
@@ -48,12 +48,22 @@ function demInfo2(rb){
     rush_yards = playerFileData[rb].run.yards_gained.reduce(function(a, b){
         return a + b;
     }, 0);
-    console.log('Rush Yards:', rush_yards);
+    // console.log('Rush Yards:', rush_yards);
 
-    console.log('Rush EPA: ', playerFileData[rb].run.epa);
-    rush_epa = playerFileData[rb].run.epa.reduce(function(a, b){
-        return a + b;
-    }, 0);
+    // console.log('Rush EPA: ', playerFileData[rb].run.epa);
+    // rush_epa = playerFileData[rb].run.epa.reduce(function(a, b){
+    //     return a + b;
+    // }, 0);
+    var rush_epa = 0;
+
+    // Added bug solution- 'N/A' was value for EPA for some plays, which caused 
+    // script to thing we wanted to append all EPAs together as strings
+    for(i = 0; i<playerFileData[rb].run.epa.length;i++){
+        val = playerFileData[rb].run.epa[i]
+        if(val != 'N/A'){
+            rush_epa += val;
+        }
+    }
 
     rush_touchdowns = playerFileData[rb].run.rush_touchdown.reduce(function(a, b){
         return a + b;
@@ -71,7 +81,7 @@ function demInfo2(rb){
         return a + b;
     }, 0);
 
-    console.log("Rush EPA", rush_epa);
+    // console.log("Rush EPA", rush_epa);
 
     player_info2 = {"Rushing Yards: ": rush_yards, "Rushing Total EPA: ": rush_epa, "Rushing Touchdowns ": rush_touchdowns, "Receiving Yards: ": rec_yards, 
         "Receiving Total EPA": rec_epa, "Receiving Touchdowns": pass_touchdowns};
@@ -93,7 +103,7 @@ function buildPlot2(rb2) {
     //  var individual = fileData2.filter(player => player.rb_name == rb);
     var individual;
     var index;
-    console.log('FileData2: ', fileData2);
+    // console.log('FileData2: ', fileData2);
     for (i = 0; i < fileData2.length; i++){
         if(fileData2[i].rb_name == rb2){
             index = i;
