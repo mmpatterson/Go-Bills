@@ -142,8 +142,8 @@
                 "<b>Pass EPA/Play: </b>" + this.getAttribute("pass_epa") + "<br/><b>Rush EPA/Play: </b>" + this.getAttribute("rush_epa");
 
             tooltip.html(html)
-                .style("left", (d3.event.pageX + 15) + "px")
-                .style("top", (d3.event.pageY - 28) + "px")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 20) + "px")
                 .transition()
                 .duration(200) // ms
                 .style("opacity", .9) // started as 0!
