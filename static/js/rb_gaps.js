@@ -283,7 +283,7 @@ function recEpaPlot() {
           .attr("fill", function(d) { return colorScale(d.y) });
       
       bar2.append("text")
-          .attr("dy", ".75em")
+          .attr("dy", ".6em")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
@@ -351,7 +351,7 @@ function rushWpaPlot() {
           .attr("fill", function(d) { return colorScale(d.y) });
       
       bar.append("text")
-          .attr("dy", ".75em")
+          .attr("dy", ".6em")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
