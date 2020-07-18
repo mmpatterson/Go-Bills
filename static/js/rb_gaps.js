@@ -177,7 +177,7 @@ function rushEpaPlot() {
 
     // Generate a histogram using twenty uniformly-spaced bins.
     var data = d3.layout.histogram()
-    .bins(x.ticks(20))
+    .bins(x.ticks(40))
     (values);
 
       var yMax = d3.max(data, function(d){return d.length});
@@ -245,7 +245,7 @@ function recEpaPlot() {
 
     // Generate a histogram using twenty uniformly-spaced bins.
     var data = d3.layout.histogram()
-    .bins(x.ticks(20))
+    .bins(x.ticks(40))
     (rec_values);
 
       var yMax = d3.max(data, function(d){return d.length});
