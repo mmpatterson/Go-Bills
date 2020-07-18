@@ -1,18 +1,18 @@
 filePath = 'csv/2019_gaps.csv';
 var rbFilePath = 'csv/rb_plays_2019.json';
 
-var newFilePath = 'https://github.com/guga31bb/nflfastR-data/blob/master/data/play_by_play_2019.csv.gz'
+var newFilePath = 'https://github.com/guga31bb/nflfastR-data/blob/master/data/play_by_play_2019.csv.gz';
 
-Access-Control-Allow-Origin: *
 
-jQuery.getJSON(newFilePath, function (csvdata) {
-  console.log(csvdata.csvToArray());
-});
 
-var fileData;
-var playerFileData;
-var selectedText;
-var rb;
+// jQuery.getJSON(newFilePath, function (csvdata) {
+//   console.log(csvdata.csvToArray());
+// });
+
+// var fileData;
+// var playerFileData;
+// var selectedText;
+// var rb;
 
 
 // Load in data from csv
