@@ -164,7 +164,7 @@ function rushEpaPlot2() {
     var max = d3.max(values);
     var min = d3.min(values);
     var x = d3.scale.linear()
-      .domain([min, max])
+      .domain([-7, 7])
       .range([0, width]);
 
     // Generate a histogram using twenty uniformly-spaced bins.
@@ -232,7 +232,7 @@ function recEpaPlot2() {
     var max = d3.max(values);
     var min = d3.min(values);
     var x = d3.scale.linear()
-      .domain([min, max])
+      .domain([-7, 7])
       .range([0, width]);
 
     // Generate a histogram using twenty uniformly-spaced bins.

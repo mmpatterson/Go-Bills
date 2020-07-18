@@ -1,6 +1,14 @@
 filePath = 'csv/2019_gaps.csv';
 var rbFilePath = 'csv/rb_plays_2019.json';
 
+var newFilePath = 'https://github.com/guga31bb/nflfastR-data/blob/master/data/play_by_play_2019.csv.gz'
+
+Access-Control-Allow-Origin: *
+
+jQuery.getJSON(newFilePath, function (csvdata) {
+  console.log(csvdata.csvToArray());
+});
+
 var fileData;
 var playerFileData;
 var selectedText;
@@ -164,7 +172,7 @@ function rushEpaPlot() {
     var max = d3.max(values);
     var min = d3.min(values);
     var x = d3.scale.linear()
-      .domain([min, max])
+      .domain([-7, 7])
       .range([0, width]);
 
     // Generate a histogram using twenty uniformly-spaced bins.
@@ -232,7 +240,7 @@ function recEpaPlot() {
     var max = d3.max(values);
     var min = d3.min(values);
     var x = d3.scale.linear()
-      .domain([min, max])
+      .domain([-7, 7])
       .range([0, width]);
 
     // Generate a histogram using twenty uniformly-spaced bins.
