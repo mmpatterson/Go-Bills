@@ -215,7 +215,8 @@ function rushEpaPlot() {
           .attr("fill", function(d) { return colorScale(d.y) });
       
       bar.append("text")
-          .attr("dy", ".75em")
+          .attr("dy", ".7em")
+          .attr("font-size","12px")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
@@ -283,7 +284,8 @@ function recEpaPlot() {
           .attr("fill", function(d) { return colorScale(d.y) });
       
       bar2.append("text")
-          .attr("dy", ".6em")
+          .attr("dy", ".7em")
+          .attr("font-size","12px")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
@@ -351,8 +353,8 @@ function rushWpaPlot() {
           .attr("fill", function(d) { return colorScale(d.y) });
       
       bar.append("text")
-          .attr("dy", ".6em")
-          .attr("y", -12)
+          .attr("dy", ".7em")
+          .attr("y", -14)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
           .text(function(d) { return d.y; })
@@ -419,7 +421,7 @@ function recWpaPlot() {
           .attr("fill", function(d) { return colorScale(d.y) });
       
       bar.append("text")
-          .attr("dy", ".75em")
+          .attr("dy", ".7em")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")

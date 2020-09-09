@@ -60,8 +60,8 @@
     // function makeVis(data){
         // Common pattern for defining vis size and margins
         var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-            width = 460 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+            width = 760 - margin.left - margin.right,
+            height = 600 - margin.top - margin.bottom;
         // console.log(rbData);
         // Add the visualization svg canvas to the vis-container <div>
         var svg = d3.select(".scatter-body").append("svg")

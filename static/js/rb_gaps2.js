@@ -208,6 +208,7 @@ function rushEpaPlot2() {
       
       bar.append("text")
           .attr("dy", ".75em")
+          .attr("font-size","12px")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
@@ -276,6 +277,7 @@ function recEpaPlot2() {
       
       bar2.append("text")
           .attr("dy", ".75em")
+          .attr("font-size","12px")
           .attr("y", -12)
           .attr("x", (x(data[0].dx) - x(0)) / 2)
           .attr("text-anchor", "middle")
